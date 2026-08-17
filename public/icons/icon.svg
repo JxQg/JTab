@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">JTab</title>
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="#17352f"/>
+  <polygon points="34,26 94,26 94,78 92,89 88,99 81,107 72,112 62,115 51,113 41,109 33,103 27,95 24,87 44,76 48,84 53,89 60,92 66,92 71,89 74,84 75,78 75,47 34,47" fill="#f7f8f1"/>
+  <polygon points="72,26 94,26 94,58 83,51 72,58" fill="#f26a4f"/>
+</svg>
