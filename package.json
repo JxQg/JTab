@@ -19,7 +19,7 @@
     "zip:firefox": "wxt zip -b firefox --mv3",
     "zip:all": "pnpm verify:privacy && pnpm zip:chromium && pnpm zip:firefox && pnpm verify:manifests && pnpm lint:firefox && pnpm verify:packages",
     "icons:generate": "node scripts/generate-icons.mjs",
-    "typecheck": "vue-tsc --noEmit",
+    "typecheck": "wxt prepare && vue-tsc --noEmit",
     "lint": "eslint .",
     "lint:firefox": "web-ext lint --source-dir .output/firefox-mv3",
     "format": "prettier --write .",

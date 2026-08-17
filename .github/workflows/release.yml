@@ -34,8 +34,8 @@ jobs:
       - name: Confirm version tag
         run: pnpm verify:release-version
 
-      - name: Build and verify store packages
-        run: pnpm zip:all
+      - name: Run quality checks and verify store packages
+        run: pnpm verify && pnpm zip:all
 
       - name: Create GitHub Release
         env:
