@@ -918,6 +918,7 @@
   .content-grid--managing .content-tile {
     padding-right: 40px;
     padding-left: 25px;
+    content-visibility: visible;
   }
 
   .content-tile--ghost {

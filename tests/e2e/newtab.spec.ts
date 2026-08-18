@@ -321,6 +321,32 @@ async function assertOptionsLayout(frame: Frame): Promise<void> {
   expect(result.navigationOverlaps).toEqual([])
 }
 
+async function assertActionMenuEscapesTile(page: Page, nodeTitle: string): Promise<void> {
+  await page.getByRole('button', { name: `更多操作：${nodeTitle}` }).click()
+  const menu = page.locator('[data-jtab-component="bookmark-actions"]')
+  await expect(menu).toBeVisible()
+  await expect(menu.getByRole('menuitem', { name: '重命名' })).toBeVisible()
+  await expect(menu.getByRole('menuitem', { name: '删除' })).toBeVisible()
+
+  const paintResult = await menu.evaluate((element) => {
+    const tile = element.closest('.content-tile')
+    if (!(tile instanceof HTMLElement)) throw new Error('The action menu has no content tile.')
+    const menuBounds = element.getBoundingClientRect()
+    const tileBounds = tile.getBoundingClientRect()
+    const sampleX = Math.min(window.innerWidth - 1, menuBounds.left + menuBounds.width / 2)
+    const sampleY = Math.min(window.innerHeight - 1, menuBounds.bottom - 8)
+    const hitTarget = document.elementFromPoint(sampleX, sampleY)
+    return {
+      escapesTile: menuBounds.bottom > tileBounds.bottom + 1,
+      bottomPainted: Boolean(hitTarget && element.contains(hitTarget)),
+    }
+  })
+  expect(paintResult).toEqual({ escapesTile: true, bottomPainted: true })
+
+  await page.keyboard.press('Escape')
+  await expect(menu).toBeHidden()
+}
+
 test('Fluid new tab supports private bookmark browsing, management, and target viewports', async () => {
   test.setTimeout(90_000)
   await mkdir(screenshotDirectory, { recursive: true })
@@ -569,6 +595,10 @@ test('Fluid new tab supports private bookmark browsing, management, and target v
     await expect(page.getByRole('heading', { name: '设计系统' })).toBeVisible()
 
     await page.getByRole('button', { name: '管理' }).click()
+    await page.locator('.entry-tabs button').filter({ hasText: '常用收藏' }).click()
+    await expect(page.getByRole('heading', { name: '常用收藏' })).toBeVisible()
+    await assertActionMenuEscapesTile(page, '设计资源')
+    await assertActionMenuEscapesTile(page, '少数派')
     await page.getByRole('button', { name: '添加书签' }).click()
     await expect(page.getByRole('heading', { name: '添加书签' })).toBeVisible()
     await expect(page.getByLabel('名称')).toBeFocused()

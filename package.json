@@ -1,6 +1,6 @@
 {
   "name": "jtab",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "A privacy-first bookmark new tab extension for Chrome, Edge, and Firefox.",
   "type": "module",
