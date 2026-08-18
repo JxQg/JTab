@@ -12,7 +12,6 @@ export default defineConfig({
       '.git/**',
       '.output/**',
       '.wxt/**',
-      '小舒同学 - 基于书签的新标签页 3.0.2/**',
       'node_modules/**',
       'output/**',
       '.pnpm-store/**',

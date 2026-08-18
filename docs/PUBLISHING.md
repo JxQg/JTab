@@ -23,7 +23,7 @@ git push origin v1.0.0
 | `jtab-<version>-firefox.zip` | Firefox Add-ons (AMO)                      |
 | `jtab-<version>-sources.zip` | Firefox 审核所需、可复现构建的源码包       |
 
-不要提交 `.output/`、`node_modules/`、本地环境变量、编辑器配置或只读参考扩展。`.gitignore` 已覆盖这些内容。
+不要提交 `.output/`、`node_modules/`、本地环境变量或编辑器配置。`.gitignore` 已覆盖这些内容。
 
 ## 商店共同准备
 

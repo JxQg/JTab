@@ -8,7 +8,7 @@ import {
 
 describe('bookmark icon fallbacks', () => {
   it('prefers a visible title character and supports CJK text', () => {
-    expect(getBookmarkMonogram('  小舒同学', 'https://example.com')).toBe('小')
+    expect(getBookmarkMonogram('  书签示例', 'https://example.com')).toBe('书')
     expect(getBookmarkMonogram('---', 'https://www.example.com')).toBe('E')
   })
 
