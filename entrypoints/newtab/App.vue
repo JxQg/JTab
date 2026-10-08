@@ -1069,6 +1069,7 @@ onBeforeUnmount(() => {
             class="search-result"
             :class="{ 'search-result--active': index === activeSearchIndex }"
             :href="result.node.url ?? '#'"
+            :title="result.node.title || getBookmarkHostname(result.node.url ?? '')"
             :target="bookmarkTarget"
             :aria-selected="index === activeSearchIndex"
             role="option"
@@ -1313,6 +1314,7 @@ onBeforeUnmount(() => {
                     <a
                       class="tile-link tile-link--bookmark"
                       :href="node.url ?? '#'"
+                      :title="node.title || getBookmarkHostname(node.url ?? '')"
                       :target="bookmarkTarget"
                       rel="noopener"
                     >
@@ -1405,6 +1407,7 @@ onBeforeUnmount(() => {
                 v-else
                 class="tile-link tile-link--bookmark"
                 :href="node.url ?? '#'"
+                :title="node.title || getBookmarkHostname(node.url ?? '')"
                 :target="bookmarkTarget"
                 rel="noopener"
               >

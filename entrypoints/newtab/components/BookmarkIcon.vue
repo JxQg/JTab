@@ -5,6 +5,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 import {
   getBookmarkFallbackColor,
+  getBookmarkHostname,
   getBookmarkMonogram,
   type BookmarkIconSource,
 } from '../../../src/core/icons'
@@ -117,7 +118,7 @@ onBeforeUnmount(() => {
     data-jtab-role="bookmark-icon"
     :data-jtab-icon-source="source"
     :style="{ width: `${size}px`, height: `${size}px` }"
-    :title="sourceLabel"
+    :title="title || getBookmarkHostname(url)"
   >
     <span v-if="loading" class="bookmark-icon__loading" aria-hidden="true" />
     <img v-else-if="imageUrl" :src="imageUrl" alt="" @error="useTextFallback" />
