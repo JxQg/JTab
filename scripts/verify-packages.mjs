@@ -25,6 +25,7 @@ const packageJson = JSON.parse(await readFile(path.join(projectRoot, 'package.js
 const temporaryDirectoryPrefix = 'jtab-release-verify-'
 
 const sourceRootFiles = [
+  'LICENSE',
   'PRIVACY.md',
   'README.md',
   'eslint.config.js',

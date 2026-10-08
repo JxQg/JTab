@@ -11,8 +11,8 @@
 ```powershell
 pnpm install --frozen-lockfile
 pnpm verify
-git tag v1.0.1
-git push origin v1.0.1
+git tag v1.0.2
+git push origin v1.0.2
 ```
 
 `Release` 工作流会拒绝版本不匹配的标签，并执行 `pnpm zip:all`。成功后会创建同名 GitHub Release，附加以下文件：
